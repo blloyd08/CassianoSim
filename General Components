@@ -1,0 +1,12 @@
+General components that make up the entire system and there description
+
+1.  Chunker   - Takes in dough. Dough is removed in chunks at a given interval
+2.  Elevator  - Raises bowl up to the chunker and allows dough to be added to chunker then returns the bowl to the ground
+3.  Scrap Hop - The scrap hopper has two hoppers. A general hopper that holds all the dough that has not been weighed and a smaller hopepr that holds the weighed dough. If there is a bowl under the scrap hopper that needs scrap it will drop the weighed dough into the empty bowl. Then it will start cutting and weighing the next set of dough.
+4.  Dosing    - This postion manages the ingredient draws. A set of liquids draw directly into the bowl. Bulk dry ingredients are drawn into a silo to be weighed and minor ingridents are drawn on a seporate system. When the bulk ingredients are finished drawing the minor ingredients transfer into the silo. When all drys are in the silo the silo is discharged into a bowl
+5.  Mixers    - There are three mixers. Each mixer mixes a bowl for a set duration on low speed and then on high speed. Within the set of mixers, a mixer is chosen on availability. If more than one mixer is availabe then it goes by priority starting with mixer 1 and working towards mixer 3.
+6.  Cycle Time- Cycle time is a global timer that prevents another bowl from starting mixing until a cooldown between when the last bowl started mixing has elapsed. Manipulating the cycle time is essential to controlling the freshness of the dough
+7.  Robot     - Robot traverses between machines picking up and dropping off bowls
+8.  HMI       - Computer that presents controls to the user to change settings
+9.  Bowl      - Bowls hold dough and carry it though all of the machines
+10. Dough     - Dough has a batch number and ingredients that make up the size of the dough
