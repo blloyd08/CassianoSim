@@ -19,7 +19,7 @@ refreshRate(Remove)     The amoung of time between redraws -- Redraw only needs 
 maxHeight       The Height of the object for max capacity
 maxWidth        The Width of the object for max capactiy
 curHeight       Variable height of drawn object that relates to current capacity
-textPoint       Location of the label to display current capacity
+textPoint(Remove)       Location of the label to display current capacity -- Requires graphics object, will do during paint
 textFont        Font of the percentage to be displayed
 percentText     The text to be displayed as the percentage
 postionPoint    Position of entire drawing object
