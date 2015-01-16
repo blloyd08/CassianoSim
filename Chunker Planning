@@ -1,0 +1,53 @@
+Desc:     The chunker is a hopper that holds dough and then "chunks" it by a given amount after a given duration
+
+--Add Data--
+Name:           Use:
+-General
+maxCapacity     The maximum amount of dough that the hopper can hold
+currCapactiy    Current capacity
+isEmpty         Flag whether chunker is empty, can be used to determine alarm
+isFull          Flag whether chunker is full, must not allow another bowl to dump if full
+isOn            Flag whether chunker is turned on. Should always be on except for startup
+
+-Chunking
+chunkSize       The amount of dough to expell during each chunking
+waitDuration    The amount of time to wait before chunking again
+chunkingTask    Task that will be maintained to run animation and updating methods
+
+-Animation/Drawing
+refreshRate(Remove)     The amoung of time between redraws -- Redraw only needs to occure when chunking, use waitDuration
+maxHeight       The Height of the object for max capacity
+maxWidth        The Width of the object for max capactiy
+curHeight       Variable height of drawn object that relates to current capacity
+textPoint       Location of the label to display current capacity
+textFont        Font of the percentage to be displayed
+percentText     The text to be displayed as the percentage
+postionPoint    Position of entire drawing object
+
+
+--Features--
+- Chunker will not accept dough when isFull=True
+- When powered on a task is run that will continously chunk
+- When powered off chunking is disabled, all chunking tasks stopped
+- Fisually show current capacity compared to max capacity and show a 
+
+--General Operation--
+-Add Dough      - Add dough to the chunker, doesn't matter if its on or off. Reject add if chunker full
+-Power On       - Set isOn flag to true and start chunking task
+-Power Off      - Set isOn flag to false, stop chunking task
+
+
+--Methods Needed--
+addDough(Amount)    - Before doing anything make sure isFull=False. Then add amount to currCapacity. If isEmpty=True, set to false. run update(), run repaint()
+
+powerOn()           - Set isOn=True, start task that will start chunking and animation
+
+powerOff()          - set isOn=False, stop chunking task
+
+paint()             - Draw max capacity object, draw current capacity object with variable height, draw text with percentage
+
+update()            - Figure out the percentage of currCapcity to maxCapacity. Use this percentage to determine height  necessary to draw a shape that represents current capacity. Save the percentage as a string to be drawn later. Save the height in currHeight
+
+run()               - run Chunk() to adjust capacity, run update() to update draw variables, run repaint(), sleep using waitDuration;
+
+chunk()             - if currCapacity - chunksize =< 0 then isEmpty=True and currCapacity=0; else currCapacity = (currCapacity - chunkSize);
